@@ -81,12 +81,12 @@ class SteamScraper:
     def generate_cvs(self):
         csv_writer = csv.writer(open('result.csv', 'w+', encoding='utf8', newline=''))
         values = []
-        for value in self.result[0].keys:
+        for value in self.result[0]:
             values.append(value)
+        csv_writer.writerow(values)
 
-        csv_writer.writerow(['title', 'price', 'desc', 'condition', 'url', 'picture'])
         for detail in self.result:
             values = []
             for value in detail:
-                values.append(value)
+                values.append(detail[value])
             csv_writer.writerow(values)
